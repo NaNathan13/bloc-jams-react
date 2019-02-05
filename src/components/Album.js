@@ -16,6 +16,19 @@ class Album extends Component {
 
   }
 
+  formatTime(toFormat) {
+    const minutes = Math.floor(toFormat / 60);
+    const seconds = Math.round(toFormat % 60);
+    if (seconds < 10 ) {
+      return minutes + ':0' + seconds;
+    } else if (isNaN(toFormat)) {
+      return '-:--';
+    } else {
+      return minutes + ':' + seconds;
+    }
+  }
+
+
     render() {
       return (
         <section className="album">
@@ -32,7 +45,16 @@ class Album extends Component {
            <col id="song-title-colum"/>
            <col id="song-duration-colum"/>
            <tbody>
-             
+           {
+							this.state.album.songs.map( (song, index) =>
+								
+								<tr className="song" key={index} >
+                  <td>{song, index +1}</td>
+									<td>{song.title}</td>
+									<td>{this.formatTime(song.duration)}</td>
+								</tr>
+							)
+						}
            </tbody>
          </table>
         </section>
