@@ -172,6 +172,7 @@ class Album extends Component {
          duration={this.audioElement.duration}
          handleTimeChange={(e) =>this.handleTimeChange(e)}
          handleVolumeChange={(e) => this.handleVolumeChange(e)}
+         formatTime= {(toFormat) => this.formatTime(toFormat)}
          />
 
         </section>
